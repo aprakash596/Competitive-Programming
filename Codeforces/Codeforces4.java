@@ -6,28 +6,46 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
+import java.util.Arrays;
 
-public class Bit 
+public class Codeforces4
 {
-    public static void main (String[]args)
+    public static void main(String[]args)
     {
-        Bit tm = new Bit();
-        tm.runIt();
+        Codeforces4 cf = new Codeforces4();
+        cf.runIt();
     }
     public void runIt()
     {
-        Kattio io = new Kattio(System.in);
+        Kattio io = new Kattio(System.in, System.out);
         int times = io.getInt();
-        int value = 0;
-        for(int i = 0; i < times; i++)
+        for(int i = times; i > 0; i--)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            int numProb = io.getInt();
+            int numDif = io.getInt();
+            int[]arr = new int[numProb];
+            for(int j = 0; j < numProb; j++)
+            {
+                arr[j] = io.getInt();
+            }
+            Arrays.sort(arr);
+            int remove = 0;
+            for(int j = 1; j < numProb; j++)
+            {
+                if(arr[j]-arr[j-1] > numDif)
+                {
+                    if(j < numProb/2)
+                    {
+                        numProb+=j;
+                    }
+                    else if(j >= numProb/2)
+                    {
+                        remove = numProb-j;
+                    }
+                }
+            }
+            System.out.println("" + remove);
         }
-        System.out.println("" + value);
     }
 }
 
@@ -87,4 +105,3 @@ class Kattio extends PrintWriter {
 	return ans;
     }
 }
-

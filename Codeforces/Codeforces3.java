@@ -7,27 +7,28 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Bit 
+public class Codeforces3 
 {
-    public static void main (String[]args)
+    public static void main(String[]args)
     {
-        Bit tm = new Bit();
-        tm.runIt();
+        Codeforces3 cf = new Codeforces3();
+        cf.runIt();
     }
     public void runIt()
     {
-        Kattio io = new Kattio(System.in);
+        Kattio io = new Kattio(System.in, System.out);
         int times = io.getInt();
-        int value = 0;
-        for(int i = 0; i < times; i++)
+        for(int i = times; i > 0; i--)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            String answer = "";
+            String line = io.getWord() + io.getWord() + io.getWord() + io.getWord() + io.getWord() + io.getWord() + io.getWord() + io.getWord();
+            for(int j = 0; j < line.length(); j++)
+            {
+                if(line.charAt(j) != '.')
+                answer += "" + line.charAt(j);
+            }
+            System.out.println("" + answer);
         }
-        System.out.println("" + value);
     }
 }
 
@@ -87,4 +88,3 @@ class Kattio extends PrintWriter {
 	return ans;
     }
 }
-

@@ -7,27 +7,45 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Bit 
+public class Queue 
 {
     public static void main (String[]args)
     {
-        Bit tm = new Bit();
+        Queue tm = new Queue();
         tm.runIt();
     }
     public void runIt()
     {
         Kattio io = new Kattio(System.in);
-        int times = io.getInt();
-        int value = 0;
-        for(int i = 0; i < times; i++)
+        int child = io.getInt();
+        int time = io.getInt();
+        String line = io.getWord();
+        char[]children = new char[child];
+        for(int i = 0; i < child; i++)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            children[i] = line.charAt(i);
         }
-        System.out.println("" + value);
+        for(int i = 0; i < time; i++)
+        {
+            for(int j = 0; j < child-1; j++)
+            {
+                if(children[j] == 'B')
+                {
+                    
+                    if(children[j+1] == 'G')
+                    {
+                        children[j] = 'G';
+                        children[j+1] = 'B';
+                        j++;
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < child; i++)
+        {
+            System.out.print("" + children[i]);
+        }
+        System.out.println("");
     }
 }
 

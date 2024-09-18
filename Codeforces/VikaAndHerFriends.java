@@ -7,27 +7,34 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Bit 
+public class VikaAndHerFriends
 {
-    public static void main (String[]args)
+    public static void main(String[]args)
     {
-        Bit tm = new Bit();
-        tm.runIt();
+        VikaAndHerFriends vahf = new VikaAndHerFriends();
+        vahf.runIt();
     }
     public void runIt()
     {
-        Kattio io = new Kattio(System.in);
+        Kattio io = new Kattio(System.in, System.out); 
         int times = io.getInt();
-        int value = 0;
-        for(int i = 0; i < times; i++)
+        for(int i = times; i > 0; i--)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            io.getInt();
+            io.getInt();
+            int k = io.getInt();
+            int x = io.getInt();
+            int y = io.getInt();
+            String answer = "YES";
+            for (int j = 0; j < k; j++) 
+            {
+                int x2 = io.getInt();
+                int y2 = io.getInt();
+                if ((x + y) % 2 == (x2 + y2) % 2) 
+                    answer = "NO";
+            }
+            System.out.print(answer + "\n");
         }
-        System.out.println("" + value);
     }
 }
 
@@ -87,4 +94,3 @@ class Kattio extends PrintWriter {
 	return ans;
     }
 }
-

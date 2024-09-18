@@ -7,27 +7,49 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Bit 
+public class Codeforces2 
 {
-    public static void main (String[]args)
+    public static void main(String[]args)
     {
-        Bit tm = new Bit();
-        tm.runIt();
+        Codeforces2 cf = new Codeforces2();
+        cf.runIt();
     }
     public void runIt()
     {
-        Kattio io = new Kattio(System.in);
+        Kattio io = new Kattio(System.in, System.out);
         int times = io.getInt();
-        int value = 0;
-        for(int i = 0; i < times; i++)
+        for(int i = times; i > 0; i--)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            int responseNum = io.getInt();
+            int [][]arr = new int[responseNum][2];
+            for(int j = 0; j < responseNum; j++)
+            {
+                arr[j][0] = io.getInt();//num words
+                arr[j][1] = io.getInt();//quality
+            }
+            int quality = 0;
+            for(int j = 0; j < responseNum; j++)
+            {
+                if(arr[j][0] <= 10 && arr[j][1] >= quality)
+                {
+                    quality = arr[j][1];
+                }
+            }
+            int num = 0;
+            boolean done = false;
+            for(int j = 0; j < responseNum; j++)
+            {
+                if(!done)
+                {
+                    num++;
+                }
+                if(!done && quality == arr[j][1])
+                {
+                    done = true;
+                }
+            }
+            System.out.println("" + num);
         }
-        System.out.println("" + value);
     }
 }
 
@@ -87,4 +109,3 @@ class Kattio extends PrintWriter {
 	return ans;
     }
 }
-

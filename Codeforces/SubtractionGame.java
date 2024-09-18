@@ -7,27 +7,27 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 
-public class Bit 
+public class SubtractionGame
 {
-    public static void main (String[]args)
+    public static void main(String[]args)
     {
-        Bit tm = new Bit();
-        tm.runIt();
+        SubtractionGame sg = new SubtractionGame();
+        sg.runIt();
     }
     public void runIt()
     {
-        Kattio io = new Kattio(System.in);
+        Kattio io = new Kattio(System.in, System.out);
+
         int times = io.getInt();
-        int value = 0;
+
         for(int i = 0; i < times; i++)
         {
-            String operation = io.getWord();
-            if(operation.contains("++"))
-                value++;
-            else if(operation.contains("--"))
-                value--;
+            int a = io.getInt();
+            int b = io.getInt();
+
+            int c = a + b;
+            System.out.println("" + c);
         }
-        System.out.println("" + value);
     }
 }
 
@@ -87,4 +87,3 @@ class Kattio extends PrintWriter {
 	return ans;
     }
 }
-
